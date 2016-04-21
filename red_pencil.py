@@ -6,7 +6,7 @@ def is_red_pencil(prices):
     on_sale = False
 
     for index, price in enumerate(prices):
-        if price < prices[index-1] * .95 and days_stable >= 30:
+        if price <= prices[index-1] * .95 and days_stable >= 30:
             is_red_pencils.append(True)
         else:
             is_red_pencils.append(False)
