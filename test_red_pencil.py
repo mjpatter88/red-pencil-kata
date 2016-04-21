@@ -14,3 +14,10 @@ class TestRedPencil(unittest.TestCase):
         prices.append(75)
         red_pencils.append(True)
         self.assertEquals(is_red_pencil(prices), red_pencils, "Stable prices followed by 25% drop should be true.")
+
+    def test_is_red_pencil__stable_price_5_discount_returns_true(self):
+        prices = [100] * 30
+        red_pencils = [False] * len(prices)
+        prices.append(95)
+        red_pencils.append(True)
+        self.assertEquals(is_red_pencil(prices), red_pencils, "Stable prices followed by 5% drop should be true.")
