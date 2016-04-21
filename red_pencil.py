@@ -7,14 +7,14 @@ def is_red_pencil(prices):
 
     days_stable = 1
     old_price = None
-    on_sale = False
+    is_on_sale = False
 
     for index, price in enumerate(prices):
-        if is_price_reduced(price, old_price) and is_stable(days_stable) or (on_sale and price <= old_price):
-            on_sale = True
+        if qualifies_for_red_pencil(price, old_price, days_stable) or continue_red_pencil(is_on_sale, price, old_price):
+            is_on_sale = True
         else:
-            on_sale = False
-        is_red_pencils.append(on_sale)
+            is_on_sale = False
+        is_red_pencils.append(is_on_sale)
 
         if price == old_price:
             days_stable += 1
@@ -23,6 +23,12 @@ def is_red_pencil(prices):
             old_price = price
 
     return is_red_pencils
+
+def continue_red_pencil(is_on_sale, price, old_price):
+    return is_on_sale and not price > old_price
+    
+def qualifies_for_red_pencil(price, old_price, days_stable):
+    return is_price_reduced(price, old_price) and is_stable(days_stable)
 
 def is_price_reduced(price, old_price):
     if old_price:
