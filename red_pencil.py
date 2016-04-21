@@ -10,7 +10,7 @@ def is_red_pencil(prices):
     on_sale = False
 
     for index, price in enumerate(prices):
-        if is_price_reduced(price, old_price) and is_stable(days_stable) or on_sale:
+        if is_price_reduced(price, old_price) and is_stable(days_stable) or (on_sale and price <= old_price):
             on_sale = True
         else:
             on_sale = False
